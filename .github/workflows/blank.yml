@@ -16,5 +16,10 @@ jobs:
   invoke:
     runs-on: ubuntu-latest
     steps:
-    - run: curl -v https://j4fa1z4b5j.execute-api.ap-northeast-1.amazonaws.com/default/sample-nlp
-      
+    - run: mkdir -p path/to/artifact
+    - run: cd path/to/artifact
+    - run: curl -o path/to/artifact/result.txt https://j4fa1z4b5j.execute-api.ap-northeast-1.amazonaws.com/default/sample-nlp
+    - uses: actions/upload-artifact@v3
+      with:
+        name: test-artiact
+        path: path/to/artifact/result.txt
